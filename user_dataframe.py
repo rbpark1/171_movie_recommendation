@@ -9,6 +9,6 @@ links = pd.read_csv('data/ml-latest-small/links.csv',
 tags = pd.read_csv('data/ml-latest-small/tags.csv',
                    usecols=["userId", "movieId", "tag", "timestamp"])
 
-user_movie_matrix = ratings.pivot(
+user_movie_df = ratings.pivot(
     index='userId', columns='movieId', values='rating').fillna(0)
-#print(user_movie_matrix)
+# print(user_movie_matrix)

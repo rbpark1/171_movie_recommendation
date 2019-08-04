@@ -2,7 +2,7 @@ import pandas as pd
 import svd
 import cf_knn
 import numpy as np
-from user_dataframe import ratings, user_movie_matrix, movies
+from user_dataframe import ratings, user_movie_df, movies
 import matplotlib.pyplot as plt
 
 # unique totals
@@ -11,7 +11,7 @@ print('Number of unique movies: %d' % ratings['movieId'].nunique())
 
 # aggregate user stats
 print('Ratings per user:')
-user_info = user_movie_matrix.astype(bool).sum(axis=1)
+user_info = user_movie_df.astype(bool).sum(axis=1)
 print(user_info.describe())
 
 # most frequent movies
@@ -27,7 +27,7 @@ userId = 47
 total_recs = []
 
 # coverage KNN
-for i in range(1, len(user_movie_matrix) + 1):
+for i in range(1, len(user_movie_df) + 1):
     print(i)
     final_recs = cf_knn.recommend(i, print_output=False)
     total_recs.append(final_recs['movieId'].values)
@@ -39,7 +39,7 @@ print('KNN Unique recs: %d' % unique_recs.size)
 total_recs = []
 
 # coverage SVD
-for i in range(1, len(user_movie_matrix) + 1):
+for i in range(1, len(user_movie_df) + 1):
     print(i)
     _, final_recs = svd.recommend(i, print_output=False)
     total_recs.append(final_recs['movieId'].values)
