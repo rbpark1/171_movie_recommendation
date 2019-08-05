@@ -12,3 +12,9 @@ tags = pd.read_csv('data/ml-latest-small/tags.csv',
 user_movie_df = ratings.pivot(
     index='userId', columns='movieId', values='rating').fillna(0)
 # print(user_movie_matrix)
+
+
+# returns movies as json
+def get_movies_json():
+    json = movies.to_json(orient='records')
+    return json

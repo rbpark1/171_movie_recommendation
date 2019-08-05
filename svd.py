@@ -8,7 +8,7 @@ from user_dataframe import movies, user_movie_df
 # output: array of recs
 def recommend(n_recommendations=10, latent_factors=50, print_output=True):
     # dimensions
-    nrow = user_movie_df.shape[0]
+    # nrow = user_movie_df.shape[0]
     # ncol = user_movie_df.shape[1]
 
     # add zero row at beginning of user_movie_matrix
