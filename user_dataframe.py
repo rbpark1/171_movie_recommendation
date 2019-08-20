@@ -16,5 +16,7 @@ user_movie_df = ratings.pivot(
 
 # returns movies as json
 def get_movies_json():
-    json = movies.to_json(orient='records')
+    movies_long = pd.merge(links, movies, on='movieId')
+    movies_long.to_csv('export_dataframe.csv', index=None, header=True)
+    json = movies_long.to_json('export_df.json', orient='records');
     return json
